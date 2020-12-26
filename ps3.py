@@ -331,7 +331,7 @@ def get_hands_number():
         except ValueError:
             print('You must enter an integer! Try again')
         else:
-            if hands_number < 1: print('Number of hands must be more than one! Try again')
+            if hands_number < 1: print('Number of hands must be more than zero! Try again')
             else: return hands_number
 
 
