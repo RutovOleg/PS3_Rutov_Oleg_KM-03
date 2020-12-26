@@ -426,6 +426,7 @@ def play_game(word_list):
     total_hands_score = 0
 
     hand_not_replayed = True
+    substitute_not_used = True
 
     for i in range(get_hands_number()):
         current_hand = deal_hand(HAND_SIZE)
@@ -433,9 +434,11 @@ def play_game(word_list):
         print('Current hand: ', end='')
         display_hand(current_hand)
 
-        print()
-        if ask_yes_no('Would you like to substitute a letter? '):
-            current_hand = substitute_hand(current_hand, input('Which letter would you like to replace: '))
+        if substitute_not_used:
+            if ask_yes_no('Would you like to substitute a letter? '):
+                print()
+                current_hand = substitute_hand(current_hand, input('Which letter would you like to replace: '))
+                substitute_not_used = False
 
         current_hand_score = play_hand(current_hand, word_list)
 
